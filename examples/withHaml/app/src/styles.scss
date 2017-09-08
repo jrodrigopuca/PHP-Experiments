@@ -1,0 +1,142 @@
+//======== Fonts ==============
+$familyH: "Alfa Slab One";  //Header font
+$familyB: "Raleway"; //Body font
+
+@function miFuente($nombre){
+    $vuelta:"";
+    @for $i from 1 through str-length($nombre){
+        $local:str-slice($nombre, $i,$end-at:$i);
+        @if ($local == " "){
+            $vuelta: $vuelta +"+";
+        }
+        @else{
+            $vuelta: $vuelta + $local;
+        }
+
+    }
+    @return $vuelta;
+}
+
+@import url("https://fonts.googleapis.com/css?family=#{miFuente($familyB)}");
+body{
+    font-family: $familyB;
+}
+
+@import url("https://fonts.googleapis.com/css?family=#{miFuente($familyH)}");
+h1,h2,h3,h4{
+    font-family: $familyH;
+}
+
+
+
+
+//======== Color ==============
+//primary color
+$dark-primary-color:#303f9f;
+$primary-color:#3f51b5;
+$light-primary-color:#c5cae9;
+$text-color:#FFFFFF;
+
+//Accent color
+$accent-color:#ff5252;
+$primary-text-color:#212121;
+$secondary-text-color:#757575;
+$divider-color:#BDBDBD;
+
+$body-color:#fafafa;
+
+//Obtain combinations --> https://www.materialpalette.com/indigo/red
+
+
+//======== Basic ==============
+html {
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+html,body{
+    min-height: 100%;
+    color:$secondary-text-color;
+}
+
+
+//======== Dimensions ============
+
+.full{
+    //width: 100%;
+    //height: 100%;
+    min-width: 100%;
+    min-height: 100vh;
+}
+.full-height{
+    height: 100%;
+    min-height: 100vh;
+}
+.full-width{
+    width: 100%;
+    min-width: 100%;
+}
+.row{
+  margin:0px;
+}
+.up{
+    z-index: 1000;
+}
+
+//==========Position
+.absolute{
+    position: absolute;
+}
+.relative{
+    position: relative;
+}
+
+//============Colors
+.navbar{
+    background-color: $dark-primary-color;
+    transition: all 0.1s;
+    .nav-item{
+        color:$text-color;
+        opacity: 0.8;
+        border-bottom: 3px solid;
+        margin: 1px;
+        &:focus, &:hover{
+            border-bottom: 3px solid;
+            color:$text-color;
+            transition: all 0.1s;
+            opacity: 1;
+        }
+    }
+    .navbar-brand{
+        @extend h1;
+    }
+}
+
+.jumbotron-fluid{
+    background-color: $primary-color;
+    color: $text-color;
+    padding: 9rem 0;
+}
+
+main{
+    min-height: 100vh;
+}
+
+
+section{
+    border-bottom: 1px solid;
+    border-color:$divider-color;
+    background-color: $body-color;
+    padding: 2em; //use this for navbar fixed
+    .container{
+        color:$secondary-text-color;
+    }
+    h1{
+        color:$dark-primary-color;
+    }
+}
+
+
+footer{
+    padding: 1em;
+}

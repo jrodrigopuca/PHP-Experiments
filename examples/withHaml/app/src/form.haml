@@ -1,0 +1,17 @@
+%form.container{action:"../../create.php", method:"post"}
+    .form-group.row 
+        %label{for:"titulo"} Titulo
+        %input.form-control{type:"text", name:"titulo", value:""}
+    .form-group.row
+        %label{for:"categoria"} categoria
+        %input.form-control{type:"text", name:"categoria", value:""}
+    .form-group.row
+        %label{for:"descripcion"} descripcion
+        %input.form-control{type:"text", name:"descripcion", value:""}
+    .form-group.row
+        %label{for:"tipo"} tipo
+        %input.form-control{type:"text", name:"tipo", value:""}
+    .form-group.row
+        %label{for:"archivo"} archivo
+        %input.form-control{type:"text", name:"archivo", value:""}
+    %button.btn.btn-primary{type:"submit"} Enviar

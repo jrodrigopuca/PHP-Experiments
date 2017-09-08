@@ -1,0 +1,38 @@
+-# Basic information
+-@autor="jarp"
+-@lang= "en"
+-@title= "PHP+HAMLTemplate"
+-@description= "My awesome template"
+-@keywords="keyword1, keyword2, keywordn"
+
+-# Basic libraries
+
+-@BootstrapV= "4.0.0-beta"
+-@TetherV="1.4.0"
+-@NormalizeV="5.0.0"
+-@jQueryV="3.1.1"
+-@FontAwesomeV="4.7.0"
+
+!!!5
+
+%html
+    %head{class:"no-js",lang:@lang}
+        /Metadata
+        %meta{charset:"utf-8"}
+        %meta{'http-equiv':"x-ua-compatible", content:"ie-edge"}
+        %title= @title
+        %meta{name:"description", content:@description}
+        %meta{name:"keywords", content:@keywords}
+        %meta{name:"author", content:@autor}
+        %meta{name:"viewport", content:"width=device-width, initial-scale=1, shrink-to-fit=no"}
+
+        /Styles
+        %link{rel:"stylesheet",href:"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/"+@BootstrapV+"/css/bootstrap.min.css"}
+        %link{rel:"stylesheet", href:"https://cdnjs.cloudflare.com/ajax/libs/normalize/"+@NormalizeV+"/normalize.min.css"}
+        %link{rel:"stylesheet", href:"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/"+@FontAwesomeV+"/css/font-awesome.min.css"}
+        %link{rel:"stylesheet",href:"app/assets/styles.css"}
+
+        %script{src:"https://cdnjs.cloudflare.com/ajax/libs/jquery/"+@jQueryV+"/jquery.js"}
+        %script{src:"https://cdnjs.cloudflare.com/ajax/libs/tether/"+@TetherV+"/js/tether.min.js"}
+        %script{src:"https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/"+@BootstrapV+"/js/bootstrap.min.js"}
+        %script{src:"./js/main.js"}
