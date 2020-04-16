@@ -2,7 +2,7 @@
 <head> </head>
 <body>
     <?php 
-        $mensaje="Inicio";
+        $mensaje="Hello world";
     ?>
     <h1> <?=$mensaje ?> </h1> 
     <h2> <?php echo $mensaje ?> </h2>
@@ -11,8 +11,7 @@
 
 
 <?php
-//mostrar info sobre php
-    #phpinfo();
+
 
 //==============COMENTARIOS===============
     //Comentarios
@@ -21,9 +20,8 @@
         Comentario
     */
 
-  
 //===============VARIABLES================
-    echo "===============VARIABLES================</br>";
+    echo "<h1>VARIABLES</h1>";
 //Tipos de variables comunes
     $intVar=-1234;
     $stringVar="Hola";
@@ -35,14 +33,11 @@
     echo $message;
 
 
-
-
 //Obtener tipo de variable
     echo gettype($stringVar); //muestra solo el tipo de variable
     echo "</br>";
     var_dump($stringVar);  //muestra toda la info de la variable
     echo "</br>";
-
 
 //Determinar tipo -> 1 true, null false
     echo is_int($intVar).PHP_EOL;
@@ -55,8 +50,9 @@
     define('NW_CONSTANTE', "hola_constante"); //para constantes se recomienda usar mayús.
     echo NW_CONSTANTE;
     echo "</br>";
+
 //================OPERADORES======================
-    echo "===============OPERADORES================</br>";
+    echo "<h1>OPERADORES</h1>";
 //Operadores
     echo "suma ",8+2,"<br/>";
     echo "resta ",8-2,"<br/>";
@@ -77,7 +73,7 @@
     echo "Texto "."Concatenado <br>";
 
 //================ESTRUCTURAS DE CONTROL======================
-    echo "===============ESTRUCTURAS DE CONTROL================</br>";
+    echo "<h1>ESTRUCTURAS DE CONTROL</h1>";
 
     $numeros = ["uno", "dos", "tres"];
     $count_num= count($numeros);
@@ -146,7 +142,7 @@
 
 
 //===============MOSTRAR================
-    echo "===============MOSTRAR================</br>";
+    echo "<h1>IMPRIMIR</h1>";
 //Formas simples
     print("Usando print<br>");
     print("Usando print_r<br>");
@@ -155,9 +151,9 @@
 //Usando interpolación
     $inter="interpolación <br>";
     echo "estoy usando ${inter}";
-//===============STRING================
-    echo "===============STRING================</br>";
 
+//===============STRING================
+    echo "<h1>STRING</h1>";
 //Crear un string 
     $ministring = "creando";
     $ejemploString = "{$ministring} un string {$ministring} <br>";
@@ -180,9 +176,9 @@
     print_r($convertidoArray);
     echo "<br><br>";
 
-//===============ARRAY================
-    echo "===============ARRAY================</br>";
 
+//===============ARRAY================
+    echo "<h1>ARRAY</h1>";
 //Crear array 
     $textoUno = array("Ham", "t-bone", "pork", "belly", "flank", "shank");
     echo "<b>Array simple: </b>";
@@ -227,7 +223,6 @@
     shuffle($a2);
     echo $a2;
 
-
 //Eliminar el último valor del array
     echo"<br><b>Eliminar el último valor del array.</b> ";
     $elUltimo= array_pop($textoUno);
@@ -258,7 +253,6 @@
     echo "<br><b>Cantidad de items: </b>", count($textoUno);      
 
 //Recorrer
-
     echo "<br><b>Lista de item en base al array1 </b>";
     echo "<ul>";
     foreach ($textoUno as $val)
@@ -276,7 +270,7 @@
     echo "</ul><br>";
 
 //===============FUNCIONES================
-    echo "===============FUNCIONES================</br>";
+    echo "<h1>FUNCIONES</h1>";
 
 //Crear una función
     function miFuncion ($parametro, $otroParametro, $parametroPorDefault="LaFunción </br>")
@@ -300,16 +294,11 @@
     echo $traerValor();
 
 //==============INCLUIR=================
-    echo "==============INCLUIR=================";
+    echo "<h1>INCLUIR</h1>";
     echo "<br>";
 //Agregar Archivos PHP (include/require)
     include 'class.php';
     include_once 'db.php';//si el archivo ya fue incluido no lo vuelve a agregar
     //require y require_once son similares solo que muestran un error en caso de que el archivo no se cargue.
-    
-    
-
-
-
 ?>
 

@@ -3,31 +3,19 @@
 //Otros: MySQL/MariaDB, Oracle OCI8, Paradox, PostgreSQL, SQLite, SQLSRV (MS SQL, SQL Azure), Sybase, Tokio Tyrant
 //Con PECL: dBase, filePro, FrontBase, Informix (IDS)/Universal Server, Ingres/EDBC/Enterprise Access Gateways
 
-//SQL CODE
-    /*
-    CREATE TABLE `cars` (
-        `name` VARCHAR(50) NULL DEFAULT NULL,
-        `description` VARCHAR(50) NULL DEFAULT NULL,
-        `link` VARCHAR(50) NULL DEFAULT NULL,
-        `ID` INT(11) NOT NULL AUTO_INCREMENT,
-        PRIMARY KEY (`ID`) USING HASH
-    )
-    COLLATE='latin1_swedish_ci'
-    ENGINE=InnoDB
-    AUTO_INCREMENT=8
-    ;
-
-    */
+//SQL CODE en db-script.sql 
 
 
 //==============DB=================
     echo "==============Conexión con MYSQLI=================";
     echo "<br>";
 //Conexión
-    $dbPassword= "juan";
-    $dbUserName= "juan";
-    $dbServer="localhost";
-    $dbName="dbcars";
+    $db= parse_ini_file("config.ini");
+
+    $dbServer=$db["db_server"];
+    $dbName=$db["db_name"];
+    $dbUserName= $db["db_user"];
+    $dbPassword= $db["db_pass"];
 
     $connection = new mysqli($dbServer,$dbUserName,$dbPassword,$dbName);
     echo "<b> datos de la conexión: </b>";
@@ -43,7 +31,7 @@
 
 
 //INSERTAR
-    $query =  "INSERT INTO cars (name, description, link) VALUES ('nuevo_car','jjlkjl','http://asjdkas.com')";
+    $query =  "INSERT INTO cars (name, description, link) VALUES ('nuevo_car','ferrari','http://asjdkas.com')";
     $connection->query($query);
     echo "<br><b> elemento agregado en DB </b>: {$connection->insert_id} <br>";
 

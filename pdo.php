@@ -2,10 +2,12 @@
 //=================Conexión con PDO==================
     echo "=================Conexión con PDO==================";
 //Datos de conexión
-    $dbPassword= "juan";
-    $dbUserName= "juan";
-    $dbServer="localhost";
-    $dbName="dbcars";
+    $db= parse_ini_file("config.ini");
+
+    $dbServer=$db["db_server"];
+    $dbName=$db["db_name"];
+    $dbUserName= $db["db_user"];
+    $dbPassword= $db["db_pass"];
 
 
 //PDO Example
