@@ -1,39 +1,57 @@
 ## Descarga del instalador de laravel
+```
 $ composer global require laravel/installer
+```
 
 ## Creando un nuevo proyecto
-$laravel new market
+```
+$ laravel new market
+```
 
 ## Iniciar 
 (en caso de que no este con Laragon)
-$php artisan serve
+```
+$ php artisan serve
+```
 
 ## Crear Model con migración
-$php artisan make:model -m Market
+```
+$ php artisan make:model -m Market
+```
 
-EL model se encontrara en /app/Market.php
-El archivo de migración se encontrará en "/database/migrations/2017_08_20_185748_create_markets_table.php"
+El model se encontrara en ```/app/Market.php```
+El archivo de migración se encontrará en ```/database/migrations/2017_08_20_185748_create_markets_table.php```
 
 
 # Database
 ## Creando una db
 
+```
 $ mysql -u juan -p
 mysql> create database market;
 mysql> exit
+```
 
 # conectando con la base de datos (usando .env)
+
+```
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=market
 DB_USERNAME=juan
 DB_PASSWORD=juan
+```
 
 # corriendo las migraciones
+
+```
 $ php artisan migrate
+```
 
 # checkeando las tablas
+
+```
 mysql> use market;
 mysql> show tables;
 
@@ -45,43 +63,61 @@ mysql> show tables;
 | password_resets  |
 | users            |
 +------------------+
+```
 
-## Usando tinker para consultar 
+## Usando tinker para consultar
+
+``` 
 $ php artisan tinker
 >>> App\Market::all()
+```
 
 ## Creando una nueva entrada
 
 Antes de asignar nueva data,hay que agregar un fillable en el model (app/Market.php) 
 
+```
 protected $fillable= ["name","city","website"];
+```
 
 Ahora con tinker:
+```
 >>> $data =["name"=>"Orlando Farmers Marker", "city" => "Orlando", "website" => "orlandomarket.com"]
 >>> App\Market::create($data)
+```
 
 # Routing a traves de un controlador a una vista
 
 ## Crear un controller
-$ php artisan make:controller -m Model [NombreController]
-Ejemplo:
-$ php artisan make:controller -m Market MarketController
 
+```
+$ php artisan make:controller -m Model [NombreController]
+```
+
+Ejemplo:
+```
+$ php artisan make:controller -m Market MarketController
+```
 El controlador se encontrará en:
-app/http/controllers/MarketController.php
+```app/http/controllers/MarketController.php```
 
 
 ## Agregando los controller en routes
-en el archivo (/routes/web.php) agrego:
+en el archivo ```(/routes/web.php)``` agrego:
 
+```
 Route::get("/", "MarketController@index");
 Route::resource("markets", "MarketController");
+```
 
 ## Ver todas las rutas disponibles
-$ php artisan route:list
 
+```
+$ php artisan route:list
+```
 ## Modificando al controller
 
+```
     public function index()
     {
         //agrego lo que debe hacer el controller
@@ -89,8 +125,12 @@ $ php artisan route:list
         return view("markets.index", ["markets"=>$markets]);
         //el markets.index va a buscar a /views/markets/index.blade.php
     }
+```
+
 ## Agregando la vista
-    //para la vista se creo un archivo /views/markets/index.blade.php
+para la vista se creo un archivo ```/views/markets/index.blade.php```
+
+```
     <ul>
     @foreach($markets as $market)
         <li>
@@ -98,40 +138,56 @@ $ php artisan route:list
         </li>
     @endforeach
     </ul>
+```
 
 # Layouts y Forms
 ## Creando nuestro propio layout (MasterPage)
-    en /resources/views/layout/app.blade.php
-    <html>
+en ```/resources/views/layout/app.blade.php```
+
+```
+<html>
     <head> </title>Farm to Market </title><head>
     <body>
         @yield("main")
     </body>
-    </html>
+</html>
+```
 
 ## Agregando el layout
+
+```
     @extends("layouts.app");
     @section("main")
         <ul></ul>
     @endsection
+```
+
 ## Agregando páginación
-    //en el controlador
+en el controlador
+
+```
     public function index()
     {
         $markets= Market::orderBy("name", "asc")->paginate(9);
         ...
     }
-    //en la vista
-        {{$markets->links()}}
-
+```
+en la vista
+```
+    {{$markets->links()}}
+```
 
 ## Validación
 
 # Relationships
 ## Creando tabla intermedia
+
+```
 $ php artisan make:migration create_farm_market_pivot_table --create farm_market
+```
 
 ## Modifico la migracion para aceptar las claves foraneas
+```
         Schema::create('farm_market', function (Blueprint $table) {
            
             $table->integer("farm_id")->unsigned()->index();
@@ -144,9 +200,12 @@ $ php artisan make:migration create_farm_market_pivot_table --create farm_market
 
             $table->timestamps();
         });
-    //luego debo correr las migraciones
+```
+luego debo correr las migraciones
 
 ## Agrego las referencias en el modelo
+
+```
     class Market extends Model
     {...
         public function farms(){
@@ -160,13 +219,17 @@ $ php artisan make:migration create_farm_market_pivot_table --create farm_market
             return $this->belongsToMany("App\Market")->withTimestamps();
         }    
     }
+```
+
 ## Agregando data a la tabla intermedia
+
+```
     $  php artisan tinker
     >> $market = App\Market::first()
     >> $farm=App\Farm:first()
     >> $market->farms()->save($farm)
     >> $market->farms()->count()
-
+```
 
 
 
