@@ -140,6 +140,14 @@
         echo "salida del for </br>";
     }
 
+    # usando for como un while
+    $i=1;
+    for(;;){
+        echo "for como while: ".$i;
+        $i+=1;
+        if ($i>5) break;
+    }
+
 
 //===============MOSTRAR================
     echo "<h1>IMPRIMIR</h1>";
@@ -147,10 +155,13 @@
     print("Usando print<br>");
     print("Usando print_r<br>");
     echo "Usando echo:", "1","2","3","4","5<br>";
+    var_dump( array("info"=>"Más info") );
 
 //Usando interpolación
-    $inter="interpolación <br>";
-    echo "estoy usando ${inter}";
+    $inter="interpolación";
+    echo "<br> estoy usando ${inter} <br>";
+    echo "<br> estoy usando {$inter} <br>";
+    echo "<br> estoy usando $inter <br>";
 
 //===============STRING================
     echo "<h1>STRING</h1>";

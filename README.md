@@ -2,4 +2,49 @@
 
 - /examples 
   - /withHaml: carpeta con PHP + HAML
-- 
+- class: clases en PHP
+- db.php: conexión con mysqli
+- db-script: base de datos para db.php
+- em.php: ejemplo de POST
+- index.php
+  - comentarios
+  - variables
+  - constantes
+  - operadores
+  - comparación
+  - if-elseif-else
+  - switch
+  - operador?
+  - operador??
+  - while
+  - for 
+  - imprimir valores
+    - interpolación
+  - String
+    - Funciones de string
+    - String a Array
+  - Array
+    - Acceder a los valores del array
+    - Existencia de valor en array
+    - Agregar nuevo valor al array
+    - Agregar nuevo clave-valor al array
+    - Array multidimensional
+    - Cantidad de elementos en array
+    - Unir elementos de un array
+    - cambia el orden del array aleatoriamente
+    - Eliminar el último valor del array
+    - Eliminar valores especificos del array
+    - Ordenar array
+    - Recorrer
+  - Funciones 
+    - Crear una función
+    - Crear una función con valor de retorno
+    - Otra forma de llamar a función con valor de retorno
+  - Include/Require 
+
+- info.php: info sobre la instalación de php
+- laravel.php: cosas para revisar sobre Laravel
+- laravel-basic: para aprender Laravel
+- otros.php: heredoc y globales
+- pdo: conexión con pdo
+- start.sh: script para ejecutar todo
