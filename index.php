@@ -31,6 +31,11 @@
 //variable simple
     $message= "hello World </br>";
     echo $message;
+//variable por referencia
+    $b=1;
+    $a= &$b;
+    $b=2;
+    echo "</br> Por referencia: ".$a."</br>"; # a=b= 2
 
 
 //Obtener tipo de variable
