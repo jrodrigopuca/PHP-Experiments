@@ -5,7 +5,7 @@ $ composer global require laravel/installer
 
 ## Creando un nuevo proyecto
 ```
-$ laravel new market
+$ laravel new mercado
 ```
 
 ## Iniciar 
@@ -16,19 +16,19 @@ $ php artisan serve
 
 ## Crear Model con migración
 ```
-$ php artisan make:model -m Market
+$ php artisan make:model -m Producto
 ```
 
-El model se encontrara en ```/app/Market.php```
-El archivo de migración se encontrará en ```/database/migrations/2017_08_20_185748_create_markets_table.php```
+El model se encontrara en ```/app/Models/Producto.php```
+El archivo de migración se encontrará en ```/database/migrations/2020_11_09_233842_create_productos_table.php```
 
 
 # Database
 ## Creando una db
 
 ```
-$ mysql -u juan -p
-mysql> create database market;
+$ mysql -u root -p
+mysql> create database mercadodb;
 mysql> exit
 ```
 
@@ -38,9 +38,9 @@ mysql> exit
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=market
-DB_USERNAME=juan
-DB_PASSWORD=juan
+DB_DATABASE=mercadodb
+DB_USERNAME=root
+DB_PASSWORD=
 ```
 
 # corriendo las migraciones
@@ -52,16 +52,17 @@ $ php artisan migrate
 # checkeando las tablas
 
 ```
-mysql> use market;
+mysql> use mercadodb;
 mysql> show tables;
 
 +------------------+
 | Tables_in_market |
 +------------------+
-| markets          |
+| productos        |
 | migrations       |
 | password_resets  |
 | users            |
+| failed_jobs      |
 +------------------+
 ```
 
